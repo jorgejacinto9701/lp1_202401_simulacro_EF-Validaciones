@@ -12,7 +12,7 @@ public class Revista {
 	private Date fechaCreacion;
 	private Date fechaRegistro;
 	private int estado;
-	private Modalidad mmodalidad;
+	private Modalidad modalidad;
 	public int getIdRevista() {
 		return idRevista;
 	}
@@ -49,12 +49,13 @@ public class Revista {
 	public void setEstado(int estado) {
 		this.estado = estado;
 	}
-	public Modalidad getMmodalidad() {
-		return mmodalidad;
+	public Modalidad getModalidad() {
+		return modalidad;
 	}
-	public void setMmodalidad(Modalidad mmodalidad) {
-		this.mmodalidad = mmodalidad;
+	public void setModalidad(Modalidad modalidad) {
+		this.modalidad = modalidad;
 	}
+
 	
 	
 	
