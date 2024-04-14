@@ -24,6 +24,7 @@
 	        <ul class="dropdown-menu">
 	        	<%
 	        		ArrayList<Opcion>	lista= (ArrayList<Opcion>)	session.getAttribute("objMenus");
+	        		if(lista != null){
 	        		for(Opcion opc : lista){
 	        			if (opc.getTipo()== 1){
 	        	%>	
@@ -33,7 +34,7 @@
 	        			</a>
 	        		</li>
 	        	<%		
-	        		}}
+	        		}}}
 	        	
 	        	%>
 	        </ul>
@@ -47,6 +48,7 @@
 	        <ul class="dropdown-menu">
 	        	<%
 	        		ArrayList<Opcion>	lista2= (ArrayList<Opcion>)	session.getAttribute("objMenus");
+	        	if(lista != null){
 	        		for(Opcion opc : lista2){
 	        			if (opc.getTipo()== 2){
 	        	%>	
@@ -56,7 +58,7 @@
 	        			</a>
 	        		</li>
 	        	<%		
-	        		}}
+	        		}}}
 	        	
 	        	%>
 	        </ul>
@@ -70,6 +72,7 @@
 	        <ul class="dropdown-menu">
 	        		        	<%
 	        		ArrayList<Opcion>	lista3= (ArrayList<Opcion>)	session.getAttribute("objMenus");
+	        	if(lista != null){
 	        		for(Opcion opc : lista3){
 	        			if (opc.getTipo()== 3){
 	        	%>	
@@ -79,7 +82,7 @@
 	        			</a>
 	        		</li>
 	        	<%		
-	        		}}
+	        		}}}
 	        	
 	        	%>
 	        </ul>
@@ -93,6 +96,7 @@
 	        <ul class="dropdown-menu">
 	        		        	<%
 	        		ArrayList<Opcion>	lista4= (ArrayList<Opcion>)	session.getAttribute("objMenus");
+	        	if(lista != null){
 	        		for(Opcion opc : lista4){
 	        			if (opc.getTipo()== 4){
 	        	%>	
@@ -102,7 +106,7 @@
 	        			</a>
 	        		</li>
 	        	<%		
-	        		}}
+	        		}}}
 	        	
 	        	%>
 	        </ul>
