@@ -43,7 +43,11 @@
 		    <scope>provided</scope>
 		</dependency>
 
-
+<dependency>
+    <groupId>org.apache.tomcat.embed</groupId>
+    <artifactId>tomcat-embed-jasper</artifactId>
+    <version>11.0.0-M18</version>
+</dependency>
 		
 
   </dependencies>
