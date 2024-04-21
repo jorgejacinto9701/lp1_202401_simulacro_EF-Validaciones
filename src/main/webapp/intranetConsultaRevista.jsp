@@ -10,6 +10,8 @@
 <script type="text/javascript" src="js/dataTables.bootstrap.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/bootstrapValidator.js"></script>
+<script type="text/javascript" src="js/global.js"></script>
+
 
 <link rel="stylesheet" href="css/bootstrap.css"/>
 <link rel="stylesheet" href="css/dataTables.bootstrap.min.css"/>
@@ -48,7 +50,7 @@
 				</div>
 				<div class="col-md-5">
 					<select	class="form-control" id="id_modalidad">
-						<option value="-1">[Seleccione]</option>
+						<option value="-1">[Todos]</option>
 					</select>
 				</div>
 		</div>
@@ -75,7 +77,6 @@
                         <th>Fecha Creación</th>
                         <th>Estado</th>
                         <th>Modalidad</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -85,6 +86,60 @@
             </table>
         </div>
 </div>
+
+<script type="text/javascript">
+
+$.getJSON("cargaModalidad", {}, function (data){
+	$.each(data, function(index, item){
+		$("#id_modalidad").append("<option value=" +  item.idModalidad +" >" +  item.descripcion + "</option>");
+	});	
+});		
+
+$("#id_btn_filtro").click(function () {
+	var vnom = $("#id_nombre").val();
+	var vfre = $("#id_frecuencia").val();
+	var vmod = $("#id_modalidad").val();
+	var vest = $("#id_estado").is(":checked") ?  1 : 0;
+	
+	$.getJSON("consultaRevista", {"nombre":vnom,"frecuencia":vfre,"modalidad": vmod, "estado": vest}, function(data) {
+		console.log(data);
+		agregarGrilla(data);
+	});
+});
+
+
+function agregarGrilla(lista){
+	 $('#id_table').DataTable().clear();
+	 $('#id_table').DataTable().destroy();
+	 $('#id_table').DataTable({
+			data: lista,
+			language: IDIOMA,
+			searching: true,
+			ordering: true,
+			processing: true,
+			pageLength: 10,
+			lengthChange: false,
+			info:true,
+			scrollY: 305,
+	        scroller: {
+	            loadingIndicator: true
+	        },
+			columns:[
+				{data: "idRevista",className:'text-center'},
+				{data: "nombre",className:'text-center'},
+				{data: "frecuencia",className:'text-center'},
+				{data: "fechaCreacion",className:'text-center'},
+				{data: function(row, type, val, meta){
+					return row.estado == 1 ? "Activo" : "Inactivo";  
+				},className:'text-center'},
+				{data: "modalidad.descripcion",className:'text-center'},
+	          ]
+	    });
+}
+
+
+</script>
+
 </body>
 </html>
 
