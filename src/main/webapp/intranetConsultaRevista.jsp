@@ -60,7 +60,7 @@
 					<input type="checkbox" class="custom-control-input" id="id_estado" checked="checked" />
 				</div>
 				<div class="col-md-2">
-					<button type="button" class="btn btn-light" id="id_btn_filtro">Filtro</button>
+					<button type="button" class="btn btn-primary" id="id_btn_filtro">Filtro</button>
 				</div>
 		
 		</div>
