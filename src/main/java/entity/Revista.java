@@ -1,6 +1,7 @@
 package entity;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 
 
@@ -10,9 +11,13 @@ public class Revista {
 	private String nombre;
 	private String frecuencia;
 	private Date fechaCreacion;
-	private Date fechaRegistro;
+	private Timestamp  fechaRegistro;
 	private int estado;
 	private Modalidad modalidad;
+	
+	//Atributo para la fecha con un formato "yyyy-MM-dd
+	private String fechaFormateada;
+	
 	public int getIdRevista() {
 		return idRevista;
 	}
@@ -37,10 +42,10 @@ public class Revista {
 	public void setFechaCreacion(Date fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
 	}
-	public Date getFechaRegistro() {
+	public Timestamp  getFechaRegistro() {
 		return fechaRegistro;
 	}
-	public void setFechaRegistro(Date fechaRegistro) {
+	public void setFechaRegistro(Timestamp  fechaRegistro) {
 		this.fechaRegistro = fechaRegistro;
 	}
 	public int getEstado() {
@@ -54,6 +59,12 @@ public class Revista {
 	}
 	public void setModalidad(Modalidad modalidad) {
 		this.modalidad = modalidad;
+	}
+	public String getFechaFormateada() {
+		return fechaFormateada;
+	}
+	public void setFechaFormateada(String fechaFormateada) {
+		this.fechaFormateada = fechaFormateada;
 	}
 
 	

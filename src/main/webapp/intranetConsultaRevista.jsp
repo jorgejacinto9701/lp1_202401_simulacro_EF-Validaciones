@@ -128,7 +128,7 @@ function agregarGrilla(lista){
 				{data: "idRevista",className:'text-center'},
 				{data: "nombre",className:'text-center'},
 				{data: "frecuencia",className:'text-center'},
-				{data: "fechaCreacion",className:'text-center'},
+				{data: "fechaFormateada",className:'text-center'},
 				{data: function(row, type, val, meta){
 					return row.estado == 1 ? "Activo" : "Inactivo";  
 				},className:'text-center'},

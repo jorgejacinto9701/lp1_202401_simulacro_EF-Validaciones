@@ -73,7 +73,7 @@
 			                   <div class="panel panel-default">
 			                   		<div id="stepOne" class="panel-collapse collapse in">
 			                   			<form id="id_form_registra">
-			                   			<input type="hidden" name="metodo" value="inserta">
+			                   			<input type="hidden" name="metodo" value="paramInserta">
 			                   			<div class="panel-body">
 			                                <div class="form-group" >
 		                                        <label class="col-lg-3 control-label" for="id_reg_nombre">Nombre</label>
@@ -134,7 +134,7 @@
 			                   <div class="panel panel-default">
 			                   		<div id="stepOne" class="panel-collapse collapse in">
 			                   			<form id="id_form_actualiza">
-			                   			<input type="hidden" name="metodo" value="actualiza">
+			                   			<input type="hidden" name="metodo" value="paramActualiza">
 			                   			<input type="hidden" name="idRevista" id="idRevista">
 			                   			<div class="panel-body">
 			                                <div class="form-group" >
@@ -197,7 +197,7 @@
 	<script type="text/javascript">
 		$("#id_btn_filtro").click(function() {
 			var vfiltro = $("#id_filtro").val();
-			$.getJSON("crudRevista", {"metodo":"lista","filtro":vfiltro}, function(data) {
+			$.getJSON("crudRevista", {"metodo":"paramLista","filtro":vfiltro}, function(data) {
 				agregarGrilla(data);
 			});
 		});
@@ -222,7 +222,7 @@
 						{data: "idRevista",className:'text-center'},
 						{data: "nombre",className:'text-center'},
 						{data: "frecuencia",className:'text-center'},
-						{data: "fechaCreacion",className:'date'},
+						{data: "fechaFormateada", className:'text-center'},
 						{data: function(row, type, val, meta){
 							return row.estado == 1 ? "Activo" : "Inactivo";  
 						},className:'text-center'},
@@ -260,6 +260,9 @@
 		
 		
 		$("#id_btn_registra").click(function() {
+			console.log(">>> [ini] >> inserta ");
+			console.log($('#id_form_registra').serialize());
+			
 			var validator = $('#id_form_registra').data('bootstrapValidator');
 		    validator.validate();
 			
@@ -290,7 +293,7 @@
 			 $.ajax({
 		          type: "POST",
 		          url: "crudRevista", 
-		          data: {"metodo":"eFisica", "idRevista":array[0]},
+		          data: {"metodo":"paramEFisica", "idRevista":array[0]},
 		          success: function(data){
 		        	  mostrarMensaje(data.mensaje);
 		        	  agregarGrilla(data.datos);
@@ -328,7 +331,7 @@
 			 $.ajax({
 		          type: "POST",
 		          url: "crudRevista", 
-		          data: {"metodo":"eLogica", "idRevista":idRevista},
+		          data: {"metodo":"paramELogica", "idRevista":idRevista},
 		          success: function(data){
 		        	  agregarGrilla(data.datos);
 		          },

@@ -3,6 +3,7 @@ package controlador;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import com.google.gson.Gson;
 
@@ -35,7 +36,7 @@ public class RegistraRevistaServlet extends HttpServlet{
 		objRevista.setFrecuencia(fre);
 		objRevista.setFechaCreacion(Date.valueOf(fec));
 		objRevista.setEstado(1);
-		objRevista.setFechaRegistro(new Date(System.currentTimeMillis()));
+		objRevista.setFechaRegistro(new Timestamp(System.currentTimeMillis()));
 		
 		Modalidad objModalidad = new Modalidad();
 		objModalidad.setIdModalidad(Integer.parseInt(mod));
