@@ -280,6 +280,46 @@ public class MySqlRevistaDAO implements RevistaDAO {
 		return objSalida;
 	}
 
+	@Override
+	public List<Revista> listaPorNombreIgual(String nombre) {
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		List<Revista> lstSalida = new ArrayList<Revista>();
+		try {
+			//1 Se crea la conexion
+			conn = MySqlDBConexion.getConexion();
+			
+			//2 Se prepara el sql
+			String sql = "SELECT * FROM revista where nombre = ? ";
+			pstm = conn.prepareStatement(sql);
+			pstm.setString(1, nombre);
+
+			System.out.println("SQL => " + pstm);
+			
+			//3 Se ejcuta el SQL
+			rs =  pstm.executeQuery();
+			Revista objRevista;
+			while(rs.next()) {
+				objRevista = new Revista();
+				objRevista.setIdRevista(rs.getInt(1));
+				objRevista.setNombre(rs.getString(2));
+
+				lstSalida.add(objRevista);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) rs.close();
+				if (pstm != null) pstm.close();
+				if (conn != null) conn.close();
+			} catch (Exception e2) {
+			}
+		}
+		return lstSalida;
+	}
+
 }
 
 

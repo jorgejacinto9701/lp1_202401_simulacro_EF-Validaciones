@@ -71,11 +71,15 @@ $(document).ready(function() {
         			notEmpty: {
                         message: 'El nombre es requerido'
                     },
-                    stringLength: {
-                        min: 3,
-                        max: 30,
+                    regexp: {
+                        regexp: /^[a-zA-Z\sáéíóúÁÉÍÓÚñÑüÜ}]{3,30}$/,
                         message: 'El nombre tiene de 3 a 30 caracteres'
                     },
+                    remote :{
+                    	delay   : 1000,
+                    	url     : 'validaRemoteRevistaNombre',
+                    	message : 'El nombre ya existe'
+                    }
         		}
         	},
         	frecuencia : {
@@ -83,6 +87,10 @@ $(document).ready(function() {
         		validators : {
         			notEmpty: {
                         message: 'La frecuencia es requerida'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z\sáéíóúÁÉÍÓÚñÑüÜ}]{3,30}$/,
+                        message: 'La frecuencia tiene de 3 a 30 caracteres'
                     },
         		}
         	},

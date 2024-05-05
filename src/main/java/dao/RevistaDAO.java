@@ -18,5 +18,7 @@ public interface RevistaDAO {
 	public abstract int eliminaRevista(int idRevista);
 	public abstract Revista buscaRevista(int idRevista);
 	
+	//Para Validaciones
+	public abstract List<Revista> listaPorNombreIgual(String nombre);
 }
 
